@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es-CO" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majoma</title>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="assets/img/logosena.png" type="image/x-icon">
+
+    <!--SEO Tags-->
+    <meta name="author" content="Majoma">
+    <meta name="description" content="Aplicativo web Bootstrap">
+    <meta name="keywords" content="SENA, sena, Sena">
+
+    <!--Optimization Tags-->
+    <meta name="theme-color" content="#000000">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandhledFriendly" content="true">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-traslucent">
+
+    <!--Styles and complements Bootstrap 5.3-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="h-100">
+    <!--Coments-->
+    <header>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/img/logo.png" alt="Avatar Logo" style="width: 40px" class="" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavbar" aria-label="Boton de menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#project">Proyecto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#team">Integrantes</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <button class="btn btn-primary" type="button" onclick="location.href='app/'">Entrar</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Carousel -->
+        <div id="demo" class="carousel slide my-5 py-3" data-bs-ride="carousel">
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"
+                    aria-label="Boton carousel1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1" aria-label="Boton carousel2"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2" aria-label="Boton carousel3"></button>
+            </div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/img/foto1.jpg" alt="Los Angeles" class="d-block w-100" />
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/foto2.jpg" alt="Chicago" class="d-block w-100" />
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/foto3.jpg" alt="New York" class="d-block w-100" />
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev"
+                aria-label="Boton carousel prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next"
+                aria-label="Boton carousel next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </header>
+    <!--Coments-->
+    <main>
+        <!--Sección proyecto-->
+        <section class="container py-5 text-center" id="project" >
+            <div class="row">
+                <div class="col-sm-4 my-auto">
+                    <img src="assets/img/logopdf.png" alt="Logo" style="width: 300px" class="" />
+                </div>
+                <div class="col-sm-8">
+                    <h1 class="py-5">Proyecto</h1>
+                    <p class="text-start">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus aliquet sagittis velit a venenatis. Sed fringilla nec
+                        felis in lobortis. Cras non ornare quam. Nullam lobortis congue
+                        ex, ac posuere mi mattis ac. Proin pretium sollicitudin neque,
+                        nec pharetra nisi placerat eget. In tempor mattis sollicitudin.
+                        Aenean pellentesque massa lectus, sit amet dictum augue accumsan
+                        sit amet. Praesent non arcu elit. Class aptent taciti sociosqu
+                        ad litora torquent per conubia nostra, per inceptos himenaeos.
+                        Proin interdum, dui ut ultrices vehicula, mi nulla faucibus
+                        turpis, eu sollicitudin mauris metus et justo. Donec tincidunt
+                        augue vitae varius gravida. Nullam at elementum justo. Ut
+                        accumsan dui quis felis mattis, non ornare augue efficitur.
+                        Aenean ullamcorper sollicitudin lorem non sodales. Vivamus
+                        vulputate quam justo, eget faucibus nibh fringilla vitae.
+                        Curabitur non pulvinar dolor. Donec non nibh tempus, viverra
+                        felis ut, auctor dolor. Nullam bibendum sagittis condimentum.
+                        Nulla varius suscipit turpis blandit elementum. Morbi porta sem
+                        ac tincidunt porta. Integer ut libero eget nulla blandit
+                        ultricies. Sed dictum purus quis magna venenatis, feugiat
+                        faucibus leo scelerisque. Duis iaculis vel nisl sit amet
+                        feugiat. Integer vitae justo maximus augue vulputate
+                        scelerisque.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!--Sección proyecto-->
+
+        <!--Sección team-->
+        <section class="container py-5" id="team">
+            <p class="h4 py-5 text-center ">Equipo de Trabajo</p>
+            <div class="row row-cols-1 g-3">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top rounded-pill mx-auto" src="assets/img/logopdf.png" alt="Card image"
+                            style="width:150px;">
+                        <div class="card-body">
+                            <h4 class="card-title">Carlos Castro</h4>
+                            <p class="card-text">Some example text.</p>
+                            <a href="#" class="btn btn-primary">See Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top rounded-pill mx-auto" src="assets/img/logopdf.png" alt="Card image"
+                            style="width:150px;">
+                        <div class="card-body">
+                            <h4 class="card-title">Carlos Castro</h4>
+                            <p class="card-text">Some example text.</p>
+                            <a href="#" class="btn btn-primary">See Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top rounded-pill mx-auto" src="assets/img/logopdf.png" alt="Card image"
+                            style="width:150px;">
+                        <div class="card-body">
+                            <h4 class="card-title">Carlos Castro</h4>
+                            <p class="card-text">Some example text.</p>
+                            <a href="#" class="btn btn-primary">See Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Sección team-->
+    </main>
+    <!--Coments-->
+    <footer class="bg-dark">
+        <p class="py-4 text-center text-light">Carlos Andres Castro - Copyright©
+            2025</p>
+    </footer>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
