@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Majoma 11</title>
+    <title>Majoma</title>
     <!--Logo Favicon-->
     <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
 
@@ -59,7 +59,7 @@
                         </label>
                     </div>
                     <button type="submit" class="float-end btn btn-primary" name="btnlogin">Ingresar</button>
-                    <a href="reg_user">Registráte como usuario</a>
+                    <a href="reguser">Registráte como usuario</a>
                 </form>
             </div>
             <div class="card-footer bg-dark">

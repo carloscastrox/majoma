@@ -1,4 +1,23 @@
+/* Dimensionar formulario */
 .form-signin{
-    max-width: 430px;
-    padding: 1rem;
-  }
+  max-width: 430px;
+  padding: 1rem;
+}
+/* Clase imagen show landing page*/
+.bg-layer-1{
+  background-image: url('../img/foto3.jpg');
+  height: 500px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+/* poner imagen de fondo de formulario */
+.bg-login{
+background-image: url('../img/foto2.jpg');
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+background-color: #000000;
+}
