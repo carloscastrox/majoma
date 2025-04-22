@@ -1,3 +1,39 @@
+<?php
+/*
+* Validación de Usuarios
+* Seguridad de la aplicación en el home
+*/
+    include "conn.php";
+    session_start();
+/*
+* Validar si el usuario ya se encuentra logueado
+* Si el usuario ya se encuentra logueado, redirigirlo a la página de home
+ */
+    if (isset($_SESSION['user'])) {
+        header("Location: home");
+        exit();
+    }
+
+    if (isset($_POST['btnlogin'])) {
+        $login = $conn->prepare("SELECT * FROM user WHERE email = ?");
+        $login->bindParam(1, $_POST['email']);
+        $login->execute();
+        $result = $login->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($result)) {
+            if (password_verify($_POST['pass'], $result['pass'])) {
+                $_SESSION['user'] = $result['email'];
+                $_SESSION['id'] = $result['id'];
+                header("Location: home");
+                exit();
+            }else {
+                $msg = array("Contraseña incorrecta", "warning");
+            }
+        }else {
+            $msg = array("El correo no existe", "danger");
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="es-CO" data-bs-theme="dark">
 
@@ -27,12 +63,17 @@
 </head>
 
 <body>
-    <?php
-    include "conn.php";
-    ?>
     <main class="form-signin m-auto pt-5 mt-4">
         <div class="card">
             <div class="card-body">
+                 <!--Alerts-->
+                 <?php if (isset($msg)) { ?>
+                    <div class="alert alert-<?php echo $msg[1]; ?> alert-dismissible">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong>Alerta!</strong> <?php echo $msg[0]; ?>
+                    </div>
+                <?php } ?>
+                <!--Alerts-->
                 <div class="text-center">
                     <img src="../assets/img/logo.png" alt="Logo" width="72" height="72">
                     <h1 class="display-6">Inicio de Sesión</h1>
@@ -40,13 +81,12 @@
                 <form action="" method="post" enctype="application/x-www-form-urlencoded">
                     <div class="mb-3 mt-3">
                         <label for="email" class="form-label">Correo:</label>
-                        <input type="email" class="form-control" id="email" placeholder="Ingrese email" name="email">
+                        <input type="email" class="form-control" id="email" placeholder="Ingrese email" name="email" required>
                     </div>
                     <div class="mb-3 password-wrapper">
 
                         <label for="pwd" class="form-label">Contraseña:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Ingrese contraseña"
-                            name="pass">
+                        <input type="password" class="form-control" id="password" placeholder="Ingrese contraseña" name="pass" required>
 
                         <span class="input-group pt-2 toggle-button eye-icon" onclick="password_show_hide();">
                             <i class="bi bi-eye d-none" id="show_eye" style="font-size:20px"></i>
