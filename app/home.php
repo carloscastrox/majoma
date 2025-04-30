@@ -2,18 +2,14 @@
 include 'conn.php';
 session_start();
 
-// Verificar al usuario para iniciar sesión
-
+//Verificar al usuario para iniciar sesión
 if (isset($_SESSION['user'])) {
     $login = $conn->prepare("SELECT * FROM user WHERE email = ?");
     $login->bindParam(1, $_SESSION['user']);
     $login->execute();
     $result = $login->fetch(PDO::FETCH_ASSOC);
-
     if (is_array($result)) {
-
         ?>
-
         <!DOCTYPE html>
         <html lang="es-CO" class="h-100">
 
@@ -60,7 +56,7 @@ if (isset($_SESSION['user'])) {
                                     <a class="nav-link" href="home">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Publicaciones</a>
+                                    <a class="nav-link" href="?page=pubs">Publicaciones</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#team">Integrantes</a>
@@ -74,20 +70,28 @@ if (isset($_SESSION['user'])) {
                     </div>
                 </nav>
             </header>
+
             <main class="container pt-5">
+                <?php
+                //Controlador de modulos o subpáginas
+                $page = isset($_GET['page']) ? strtolower($_GET['page']) : 'home';
+                require_once './' . $page . '.php';
 
-            hol a todos
-
-
+                if ($page == 'home') {
+                    require_once 'init.php';
+                    }
+                ?>
             </main>
+
             <!--Complements JS-->
             <script src="../assets/js/bootstrap.bundle.min.js"></script>
+            <!--Script visualización password-->
+            <script src="../assets/js/password.viewer.js"></script>
             <?php
         }
     } else {
-    // Si el usuario no está logueado, redirigir a la página de inicio de sesión
+    // si no hay sesión activa, redirigir a la página de inicio de sesión
     header("Location: ./");
-
     }
 ?>
 </body>

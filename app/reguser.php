@@ -7,48 +7,48 @@ Validación de datos únicos OK
 API Js password Viewer OK
 Recuperación de contraseña
 */
+
 require_once 'conn.php';
 
 if (isset($_POST['btn-reg'])) {
-    $insert = $conn->prepare("INSERT INTO user(fname, lname, email, pass) VALUES(?,?,?,?)");
+    $insert = $conn->prepare('INSERT INTO user(fname,lname,email,pass) VALUES(?,?,?,?)');
     $insert->bindParam(1, $_POST['fname']);
     $insert->bindParam(2, $_POST['lname']);
     $insert->bindParam(3, $_POST['email']);
-    $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+    $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $insert->bindParam(4, $pass);
 
     /* Data Validation */
-    $search = $conn->prepare("SELECT * FROM user WHERE email = ?");
+    $search = $conn->prepare('SELECT * FROM user WHERE email = ?');
     $search->bindParam(1, $_POST['email']);
     $search->execute();
     $result = $search->fetch(PDO::FETCH_ASSOC);
 
     if ($result) {
         $msg = array("El correo ya existe", "danger");
-    } 
-    /* Data Validation */
-
-    elseif ($insert->execute()) {
-        $msg = array("Datos Registrados", "success");
+        }
+    /* Data Validation */ elseif ($insert->execute()) {
+        $msg = array("Usuario Creado", "success");
         } else {
-        $msg = array("Datos no registrados", "danger");
+        $msg = array("Usuario no Creado", "danger");
         }
     }
 ?>
 <!DOCTYPE html>
-<html lang="es-CO" data-bs-theme="" class="h-100">
+<html lang="es-CO" class="h-100">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Majoma</title>
-    <!--Logo Favicon-->
-    <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
+    <title>Celia</title>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="../assets/img/logosena.png" type="image/x-icon">
 
     <!--SEO Tags-->
-    <meta name="author" content="Majoma">
+    <meta name="author" content="Celia">
     <meta name="description" content="Aplicativo web Bootstrap">
-    <meta name="keywords" content="SENA, sena, Sena, Aplicativo, APLICATIVO, aplicativo">
+    <meta name="keywords" content="SENA, sena, Sena">
 
     <!--Optimization Tags-->
     <meta name="theme-color" content="#000000">
@@ -57,22 +57,22 @@ if (isset($_POST['btn-reg'])) {
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-traslucent">
 
-    <!--Bootstrap 5.3 Styles and complements-->
+    <!--Styles and complements Bootstrap 5.3-->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/me.styles.css">
     <!--styles Icons Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body class="bg-login">
-    <main class="form-signin m-auto ">
-        <div class="card" style="border-radius: 1.5rem;background-color: #ffffffdb;">
+<body>
+    <main class="form-signin m-auto pt-5 mt-4">
+        <div class="card">
             <div class="card-body">
                 <!--Alerts-->
                 <?php if (isset($msg)) { ?>
                     <div class="alert alert-<?php echo $msg[1]; ?> alert-dismissible">
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        <strong>Success!</strong> <?php echo $msg[0]; ?>
+                        <strong>Alerta !</strong> <?php echo $msg[0]; ?>
                     </div>
                 <?php } ?>
                 <!--Alerts-->
@@ -84,8 +84,8 @@ if (isset($_POST['btn-reg'])) {
                     <h1 class="display-6">Registro de Usuario</h1>
                 </div>
                 <form action="" method="post" enctype="application/x-www-form-urlencoded">
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <div class="mb-3 mt-3">
+                        <label for="fname" class="form-label">Nombres:</label>
                         <input type="text" class="form-control" id="fname" placeholder="Ingrese sus nombres"
                             name="fname" required>
                     </div>
@@ -122,6 +122,9 @@ if (isset($_POST['btn-reg'])) {
             </div>
         </div>
     </main>
+
+
+    <!--Complements JS-->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!--Script visualización password-->
     <script src="../assets/js/password.viewer.js"></script>
