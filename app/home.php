@@ -63,7 +63,7 @@ if (isset($_SESSION['user'])) {
                                     <a class="nav-link" href="">Publicaciones</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#team">Integrantes</a>
+                                    <a class="nav-link" href="?pag=tableuser">Usuarios</a>
                                 </li>
                             </ul>
                             <div class="d-flex">
@@ -76,8 +76,16 @@ if (isset($_SESSION['user'])) {
             </header>
             <main class="container pt-5">
 
-            hol a todos
+           <?php
+           //Controlador de modulos o subpaginas
+           $pag = isset($_GET['pag']) ? strtolower($_GET['pag']) : 'home';
+           require_once './'.$pag.'.php';
 
+           if ($pag == 'home') {
+            require_once 'welcome.php';
+           }
+           
+           ?>
 
             </main>
             <!--Complements JS-->
